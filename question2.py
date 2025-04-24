@@ -5,12 +5,10 @@ import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import matplotlib.pyplot as plt
 
-# Definindo variáveis fuzzy
 temperatura = ctrl.Antecedent(np.arange(0, 71, 1), 'temperatura')
 fluxo = ctrl.Antecedent(np.arange(0, 61, 1), 'fluxo')
 abertura = ctrl.Consequent(np.arange(0, 101, 1), 'abertura')
 
-# Funções de pertinência
 temperatura['baixa'] = fuzz.trimf(temperatura.universe, [0, 0, 30])
 temperatura['media'] = fuzz.trimf(temperatura.universe, [20, 35, 50])
 temperatura['alta'] = fuzz.trimf(temperatura.universe, [40, 70, 70])
@@ -34,7 +32,6 @@ rule6 = ctrl.Rule(temperatura['alta'] & fluxo['alto'], abertura['moderada'])
 sistema_ctrl = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5, rule6])
 sistema = ctrl.ControlSystemSimulation(sistema_ctrl)
 
-# Executando o sistema de controle fuzzy
 sistema.input['temperatura'] = 25
 sistema.input['fluxo'] = 50
 sistema.compute()
