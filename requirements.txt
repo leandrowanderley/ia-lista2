@@ -3,3 +3,4 @@ matplotlib
 scikit-fuzzy
 scipy
 networkx
+pgmpy
