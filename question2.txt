@@ -1,0 +1,22 @@
+Descrição do Problema
+Este sistema fuzzy tem como objetivo controlar a abertura de uma válvula em um chuveiro elétrico com base em duas variáveis de entrada: a temperatura da água e o fluxo de água. A ideia é manter uma temperatura confortável mesmo com variações no fluxo, automatizando o controle da mistura de água quente e fria.
+
+Variáveis de entrada:
+- Temperatura (0 a 70 ºC): baixa, média, alta
+- Fluxo (0 a 60 litros/min): baixo, médio, alto
+
+Variável de saída:
+- Abertura da válvula (0 a 100%): pequena, moderada, grande
+
+Descrição da Solução
+Utilizou-se o método de inferência Mamdani para criar um sistema baseado em regras fuzzy. As funções de pertinência foram definidas usando funções triangulares (`trimf`). As regras do sistema relacionam as combinações de temperatura e fluxo com a abertura ideal da válvula.
+
+Regras implementadas:
+1. Se temperatura é baixa e fluxo é alto, então abertura é grande
+2. Se temperatura é baixa e fluxo é médio, então abertura é moderada
+3. Se temperatura é média e fluxo é alto, então abertura é moderada
+4. Se temperatura é média e fluxo é baixo, então abertura é pequena
+5. Se temperatura é alta e fluxo é baixo, então abertura é pequena
+6. Se temperatura é alta e fluxo é alto, então abertura é moderada
+
+O sistema foi implementado utilizando a biblioteca Scikit-Fuzzy, e testado com entrada de temperatura = 25 ºC e fluxo = 50 L/min, resultando em uma abertura de válvula de aproximadamente 56.34%.

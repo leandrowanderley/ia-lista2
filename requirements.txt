@@ -4,3 +4,4 @@ scikit-fuzzy
 scipy
 networkx
 pgmpy
+pandas
